@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { publicSupabase } from "@/integrations/supabase/public-client";
 
 export const Route = createFileRoute("/register")({
   head: () => ({
@@ -14,8 +14,7 @@ export const Route = createFileRoute("/register")({
       { property: "og:title", content: "Confirm Your Participation · Asian HR Conclave 2026" },
       {
         property: "og:description",
-        content:
-          "Secure your invitation to India's most credible CHRO recognition programme.",
+        content: "Secure your invitation to India's most credible CHRO recognition programme.",
       },
     ],
   }),
@@ -43,12 +42,17 @@ function RegisterPage() {
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (!values.name.trim() || values.name.trim().length > 100) e.name = "Please enter your name (max 100 chars).";
-    if (!values.title.trim() || values.title.trim().length > 120) e.title = "Please enter your title / designation.";
-    if (!values.origin.trim() || values.origin.trim().length > 120) e.origin = "Please tell us where you are coming from.";
+    if (!values.name.trim() || values.name.trim().length > 100)
+      e.name = "Please enter your name (max 100 chars).";
+    if (!values.title.trim() || values.title.trim().length > 120)
+      e.title = "Please enter your title / designation.";
+    if (!values.origin.trim() || values.origin.trim().length > 120)
+      e.origin = "Please tell us where you are coming from.";
     if (!/^\+\d{1,4}$/.test(values.countryCode)) e.countryCode = "Country code e.g. +91";
-    if (!/^\d{6,15}$/.test(values.whatsapp.replace(/\s/g, ""))) e.whatsapp = "Enter a valid WhatsApp number.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) e.email = "Enter a valid email address.";
+    if (!/^\d{6,15}$/.test(values.whatsapp.replace(/\s/g, "")))
+      e.whatsapp = "Enter a valid WhatsApp number.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim()))
+      e.email = "Enter a valid email address.";
     if (!values.gender) e.gender = "Please select an option.";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -59,7 +63,7 @@ function RegisterPage() {
     if (!validate()) return;
     setSubmitting(true);
     setSubmitError(null);
-    const { error } = await supabase.from("registrations").insert({
+    const { error } = await publicSupabase.from("registrations").insert({
       name: values.name.trim(),
       designation: values.title.trim(),
       organization: values.origin.trim(),
@@ -106,7 +110,10 @@ function RegisterPage() {
 
       {/* Hero band */}
       <section className="relative pt-32 lg:pt-40 pb-14 bg-midnight text-cream overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,168,76,0.22),transparent_60%)]" aria-hidden />
+        <div
+          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,168,76,0.22),transparent_60%)]"
+          aria-hidden
+        />
         <div className="relative mx-auto max-w-4xl px-6 lg:px-10 text-center">
           <div className="flex items-center justify-center gap-4 mb-6">
             <span className="h-px w-10 bg-gold/60" />
@@ -115,12 +122,12 @@ function RegisterPage() {
           </div>
           <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-cream">
             Secure your invitation to{" "}
-            <span className="italic gold-text">India's most credible</span>{" "}
-            CHRO recognition programme.
+            <span className="italic gold-text">India's most credible</span> CHRO recognition
+            programme.
           </h1>
           <p className="mt-6 mx-auto max-w-2xl text-cream/75 text-base sm:text-lg leading-relaxed">
-            Complete the form below and our team will confirm your participation
-            with full event details.
+            Complete the form below and our team will confirm your participation with full event
+            details.
           </p>
         </div>
       </section>
@@ -136,9 +143,8 @@ function RegisterPage() {
               </h2>
               <span className="gold-divider mx-auto mt-6" />
               <p className="mt-6 text-midnight/75 leading-relaxed">
-                Your participation confirmation has been received. A member of the Asia INC 500
-                team will be in touch shortly with your confirmation and event
-                details.
+                Your participation confirmation has been received. A member of the Asia INC 500 team
+                will be in touch shortly with your confirmation and event details.
               </p>
               <div className="mt-10 flex flex-wrap justify-center gap-4">
                 <Link to="/" className="btn-gold btn-gold-hover gold-glow">
@@ -261,7 +267,9 @@ function RegisterPage() {
                   >
                     <option value="">Select…</option>
                     {genders.map((g) => (
-                      <option key={g} value={g}>{g}</option>
+                      <option key={g} value={g}>
+                        {g}
+                      </option>
                     ))}
                   </select>
                 </Field>
@@ -272,8 +280,8 @@ function RegisterPage() {
               )}
               <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-5">
                 <p className="text-xs text-midnight/55 leading-relaxed max-w-sm">
-                  By submitting, you agree to be contacted by the Asia INC 500 events
-                  team regarding your participation.
+                  By submitting, you agree to be contacted by the Asia INC 500 events team regarding
+                  your participation.
                 </p>
                 <button
                   type="submit"
@@ -315,7 +323,10 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={id} className="block text-[10px] tracking-[0.25em] uppercase text-midnight/60 mb-2">
+      <label
+        htmlFor={id}
+        className="block text-[10px] tracking-[0.25em] uppercase text-midnight/60 mb-2"
+      >
         {label}
       </label>
       {children}
