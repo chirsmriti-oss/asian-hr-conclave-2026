@@ -1,0 +1,239 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-midnight: var(--midnight);
+  --color-midnight-deep: var(--midnight-deep);
+  --color-cream: var(--cream);
+  --color-cream-warm: var(--cream-warm);
+  --color-border: var(--border);
+  --color-ring: var(--gold);
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Brand */
+  --midnight: oklch(0.22 0.08 270);          /* #0D1B3E */
+  --midnight-deep: oklch(0.16 0.07 270);
+  --cream: oklch(0.96 0.015 85);             /* #F5F0E8 */
+  --cream-warm: oklch(0.93 0.025 80);
+  --gold: oklch(0.74 0.12 85);               /* #C9A84C */
+  --gold-soft: oklch(0.84 0.08 85);
+
+  --background: var(--cream);
+  --foreground: var(--midnight);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--midnight);
+  --primary: var(--midnight);
+  --primary-foreground: var(--cream);
+  --secondary: var(--cream-warm);
+  --secondary-foreground: var(--midnight);
+  --muted: oklch(0.92 0.018 80);
+  --muted-foreground: oklch(0.45 0.03 270);
+  --accent: var(--gold);
+  --accent-foreground: var(--midnight);
+  --border: oklch(0.88 0.02 80);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: var(--gold);
+    color: var(--midnight);
+  }
+}
+
+@utility gold-divider {
+  display: block;
+  width: 64px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+@utility hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 60%, transparent), transparent);
+}
+
+@utility lux-card {
+  background: color-mix(in oklab, white 70%, var(--cream));
+  border: 1px solid color-mix(in oklab, var(--gold) 20%, transparent);
+  border-radius: 0.75rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+@utility lux-card-hover {
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -24px color-mix(in oklab, var(--midnight) 35%, transparent);
+    border-color: color-mix(in oklab, var(--gold) 60%, transparent);
+  }
+}
+
+@utility btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  background: var(--gold);
+  color: var(--midnight);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+}
+@utility btn-gold-hover {
+  &:hover {
+    background: var(--midnight);
+    color: var(--gold);
+    box-shadow: 0 12px 32px -12px color-mix(in oklab, var(--gold) 70%, transparent);
+  }
+}
+
+@utility btn-ghost-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid color-mix(in oklab, var(--gold) 70%, transparent);
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+@utility btn-ghost-gold-hover {
+  &:hover {
+    background: var(--gold);
+    color: var(--midnight);
+  }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@utility fade-up {
+  animation: fadeUp 0.9s ease-out both;
+}
+
+@utility gold-text {
+  background: linear-gradient(120deg, #C9A84C 0%, #E8CE7A 50%, #C9A84C 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+/* Scroll-reveal: hidden until .is-visible is applied via IntersectionObserver */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1s cubic-bezier(0.2, 0.7, 0.1, 1), transform 1s cubic-bezier(0.2, 0.7, 0.1, 1);
+  will-change: opacity, transform;
+}
+@utility reveal-delay-1 { transition-delay: 0.08s; }
+@utility reveal-delay-2 { transition-delay: 0.16s; }
+@utility reveal-delay-3 { transition-delay: 0.24s; }
+@utility reveal-delay-4 { transition-delay: 0.32s; }
+
+.is-visible.reveal,
+.is-visible .reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@utility lux-input {
+  width: 100%;
+  background: color-mix(in oklab, white 80%, var(--cream));
+  border: 1px solid color-mix(in oklab, var(--midnight) 15%, transparent);
+  border-radius: 0.6rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  color: var(--midnight);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  font-family: var(--font-sans);
+}
+
+.lux-input:focus {
+  outline: none;
+  border-color: color-mix(in oklab, var(--gold) 70%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--gold) 22%, transparent);
+  background: white;
+}
+.lux-input::placeholder { color: color-mix(in oklab, var(--midnight) 40%, transparent); }
+
+@utility gold-glow {
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--gold) 40%, transparent),
+              0 18px 48px -18px color-mix(in oklab, var(--gold) 55%, transparent);
+}
+
+@keyframes goldLineGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@utility gold-line {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform-origin: left;
+  animation: goldLineGrow 1.4s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
