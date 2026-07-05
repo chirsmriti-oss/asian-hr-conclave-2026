@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      admins: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          name: string
+          role: "super_admin" | "admin"
+          status: "active" | "inactive"
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id: string
+          name: string
+          role: "super_admin" | "admin"
+          status?: "active" | "inactive"
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          role?: "super_admin" | "admin"
+          status?: "active" | "inactive"
+        }
+        Relationships: []
+      }
       registrations: {
         Row: {
           country_code: string
