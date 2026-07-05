@@ -3,12 +3,7 @@ import { Pencil, Plus, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -129,7 +124,7 @@ function AdminUsersContent() {
       throw new Error(String(data.error));
     }
 
-    return data as { temporaryPassword?: string } | null;
+    return data as { ok?: boolean } | null;
   }
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -138,7 +133,7 @@ function AdminUsersContent() {
     setMessage("");
 
     try {
-      const result = await callAdminFunction({
+      await callAdminFunction({
         action: form.id ? "update" : "create",
         id: form.id,
         name: form.name.trim(),
@@ -148,11 +143,7 @@ function AdminUsersContent() {
         status: form.status,
       });
       await loadAdmins();
-      if (result?.temporaryPassword) {
-        setMessage(`Created. Temporary password: ${result.temporaryPassword}`);
-      } else {
-        setDialogOpen(false);
-      }
+      setDialogOpen(false);
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Could not save admin user.");
     } finally {
@@ -175,9 +166,7 @@ function AdminUsersContent() {
     <section>
       <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
-            Super Admin
-          </p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Super Admin</p>
           <h1 className="mt-2 font-display text-4xl">Admin Users</h1>
         </div>
         <Button onClick={openCreate}>
@@ -227,9 +216,7 @@ function AdminUsersContent() {
                 <TableRow key={admin.id}>
                   <TableCell className="font-medium">{admin.name}</TableCell>
                   <TableCell>{admin.email}</TableCell>
-                  <TableCell>
-                    {admin.role === "super_admin" ? "Super Admin" : "Admin"}
-                  </TableCell>
+                  <TableCell>{admin.role === "super_admin" ? "Super Admin" : "Admin"}</TableCell>
                   <TableCell>
                     <Badge variant={admin.status === "active" ? "default" : "outline"}>
                       {admin.status}
@@ -268,7 +255,9 @@ function AdminUsersContent() {
               <Input
                 id="admin-name"
                 value={form.name}
-                onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
+                onChange={(event) =>
+                  setForm((current) => ({ ...current, name: event.target.value }))
+                }
                 required
               />
             </div>

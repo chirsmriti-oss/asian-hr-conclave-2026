@@ -2,12 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpDown, Download, Eye } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import {
   Table,
@@ -61,10 +56,9 @@ function RegistrationsContent() {
       setLoading(true);
       let request = supabase
         .from("registrations")
-        .select(
-          "id,name,designation,organization,country_code,whatsapp,email,gender,created_at",
-          { count: "exact" },
-        )
+        .select("id,name,designation,organization,country_code,whatsapp,email,gender,created_at", {
+          count: "exact",
+        })
         .order(sort, { ascending })
         .range((page - 1) * pageSize, page * pageSize - 1);
 

@@ -170,7 +170,10 @@ export function AdminShell({
 
       <div className="mx-auto grid max-w-7xl gap-6 px-5 py-6 lg:grid-cols-[220px_1fr] lg:px-8">
         <aside className="rounded-lg border border-midnight/10 bg-white p-2 shadow-sm">
-          <nav className="flex gap-2 overflow-x-auto lg:flex-col lg:overflow-visible" aria-label="Admin">
+          <nav
+            className="flex gap-2 overflow-x-auto lg:flex-col lg:overflow-visible"
+            aria-label="Admin"
+          >
             {items
               .filter((item) => item.allowed)
               .map((item) => (
@@ -179,7 +182,8 @@ export function AdminShell({
                   to={item.to}
                   className={cn(
                     "whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-midnight/68 transition-colors hover:bg-gold/10 hover:text-midnight",
-                    active === item.key && "bg-midnight text-cream hover:bg-midnight hover:text-cream",
+                    active === item.key &&
+                      "bg-midnight text-cream hover:bg-midnight hover:text-cream",
                   )}
                 >
                   {item.label}
@@ -239,7 +243,11 @@ export function toCsv(rows: RegistrationRecord[]) {
     "Gender",
     "Submitted On",
   ];
-  const escape = (value: string) => `"${value.replaceAll('"', '""')}"`;
+  const escape = (value: string) => {
+    const normalized = value.replaceAll('"', '""');
+    const safe = /^[=+\-@\t\r]/.test(normalized) ? `'${normalized}` : normalized;
+    return `"${safe}"`;
+  };
   const body = rows.map((row) =>
     [
       row.name,
