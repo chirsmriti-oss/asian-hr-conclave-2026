@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Linkedin, Instagram, Youtube } from "lucide-react";
+import { Linkedin, Instagram } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -917,18 +917,23 @@ function Home() {
             <h4 className="text-gold text-[10px] tracking-[0.25em] uppercase">Follow Us</h4>
             <ul className="mt-5 space-y-3 text-sm">
               <li>
-                <a href="#" className="flex items-center gap-2.5 hover:text-gold transition-colors">
+                <a
+                  href="https://my.linkedin.com/company/asia-in.-500"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2.5 hover:text-gold transition-colors"
+                >
                   <Linkedin size={16} className="text-gold shrink-0" /> LinkedIn
                 </a>
               </li>
               <li>
-                <a href="#" className="flex items-center gap-2.5 hover:text-gold transition-colors">
+                <a
+                  href="https://www.instagram.com/asiainc500/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2.5 hover:text-gold transition-colors"
+                >
                   <Instagram size={16} className="text-gold shrink-0" /> Instagram
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center gap-2.5 hover:text-gold transition-colors">
-                  <Youtube size={16} className="text-gold shrink-0" /> YouTube
                 </a>
               </li>
             </ul>
