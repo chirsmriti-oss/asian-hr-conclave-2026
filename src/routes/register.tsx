@@ -87,8 +87,12 @@ function RegisterPage() {
       <header className="fixed top-0 inset-x-0 z-50 bg-midnight/90 backdrop-blur-xl border-b border-gold/15">
         <nav className="mx-auto max-w-7xl px-6 lg:px-10 h-16 lg:h-20 flex items-center justify-between gap-4">
           <Link to="/" className="flex min-w-0 items-center gap-3 group">
-            <div className="shrink-0 h-9 w-9 rounded-full border border-gold/60 grid place-items-center text-gold font-display text-lg transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-gold/10">
-              A
+            <div className="shrink-0 h-9 w-9 rounded-full border border-gold/60 bg-cream/95 p-1.5 grid place-items-center transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-cream">
+              <img
+                src="/invitation-partner-logo.png"
+                alt="Asian HR Conclave"
+                className="h-full w-full object-contain"
+              />
             </div>
             <div className="min-w-0 leading-tight">
               <div className="truncate text-cream font-display text-base lg:text-lg tracking-wide">

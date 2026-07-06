@@ -186,8 +186,12 @@ function Home() {
       >
         <nav className="mx-auto max-w-7xl px-6 lg:px-10 h-16 lg:h-20 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
           <a href="#top" className="flex min-w-0 items-center gap-3 group">
-            <div className="shrink-0 h-9 w-9 rounded-full border border-gold/60 grid place-items-center text-gold font-display text-lg transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-gold/10">
-              A
+            <div className="shrink-0 h-9 w-9 rounded-full border border-gold/60 bg-cream/95 p-1.5 grid place-items-center transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-cream">
+              <img
+                src="/invitation-partner-logo.png"
+                alt="Asian HR Conclave"
+                className="h-full w-full object-contain"
+              />
             </div>
             <div className="min-w-0 leading-tight">
               <div className="truncate text-cream font-display text-base lg:text-lg tracking-wide">
@@ -212,6 +216,11 @@ function Home() {
             <Link to="/register" className="btn-gold btn-gold-hover gold-glow">
               Confirm Your Participation
             </Link>
+            <img
+              src="/asia-inc-logo.jpeg"
+              alt="Asia INC 500"
+              className="h-10 w-auto shrink-0 rounded-sm object-contain"
+            />
           </div>
 
           <button
