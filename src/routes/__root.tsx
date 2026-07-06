@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
+  useLocation,
   createRootRouteWithContext,
   useRouter,
   HeadContent,
@@ -11,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { InvitationExperience } from "../components/invitation/InvitationExperience";
 
 function NotFoundComponent() {
   return (
@@ -87,8 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Asian HR Conclave & Top CHRO Awards Night 2026" },
       {
         property: "og:description",
-        content:
-          "A landmark one day programme by Asia INC 500 celebrating India's Top HR Leaders.",
+        content: "A landmark one day programme by Asia INC 500 celebrating India's Top HR Leaders.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -111,11 +112,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <head>
+    <html lang="en" suppressHydrationWarning>
+      <head suppressHydrationWarning>
         <HeadContent />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {children}
         <Scripts />
       </body>
@@ -125,9 +126,13 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const location = useLocation();
+  const showInvitation =
+    import.meta.env.VITE_ENABLE_INVITATION_EXPERIENCE === "true" && location.pathname === "/";
 
   return (
     <QueryClientProvider client={queryClient}>
+      {showInvitation ? <InvitationExperience /> : null}
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
