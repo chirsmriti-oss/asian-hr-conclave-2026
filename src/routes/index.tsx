@@ -348,9 +348,9 @@ function Home() {
             </div>
             <dl className="grid sm:grid-cols-2 gap-x-10 gap-y-7">
               {[
-                ["Event Date", "11th August 2026"],
+                ["Event Date", "20th August 2026"],
                 ["Duration", "One Full Day"],
-                ["Venue", "Hyatt Regency, Chandigarh"],
+                ["Venue", "To be disclosed to confirmed delegates"],
                 ["Format", "Conclave · Awards Ceremony · Gala Dinner"],
                 ["Hosted By", "Asia INC 500, Events & Media Division"],
                 ["Dress Code", "Black Tie · Business Formal"],
@@ -539,7 +539,7 @@ function Home() {
                   <h3 className="mt-2 font-display text-3xl text-cream">
                     Conclave & Top CHRO Awards Night
                   </h3>
-                  <p className="text-sm text-cream/60 mt-1">Hyatt Regency, Chandigarh</p>
+                  <p className="text-sm text-cream/60 mt-1">To be disclosed to confirmed delegates</p>
                 </div>
                 <span className="text-gold font-display text-5xl opacity-40">01</span>
               </div>

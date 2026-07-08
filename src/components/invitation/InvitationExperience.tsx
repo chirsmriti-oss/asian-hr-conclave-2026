@@ -215,7 +215,7 @@ export function InvitationExperience() {
                     BY INVITATION ONLY
                   </h1>
                   <p>Asia's Most Exclusive Gathering of Chief Human Resources Officers</p>
-                  <div className="invitation-date">11 August 2026</div>
+                  <div className="invitation-date">20 August 2026</div>
                   <button className="invitation-enter" type="button" onClick={enter}>
                     Enter Experience
                     <span aria-hidden>→</span>
