@@ -115,13 +115,27 @@ function AdminUsersContent() {
   }
 
   async function callAdminFunction(body: Record<string, unknown>) {
-    const { data, error } = await supabase.functions.invoke("admin-users", {
-      body,
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session?.access_token) {
+      throw new Error("Your admin session has expired. Please sign in again.");
+    }
+
+    const response = await fetch("/api/admin-users", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${session.access_token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
     });
 
-    if (error) throw new Error(error.message);
-    if (data && typeof data === "object" && "error" in data) {
-      throw new Error(String(data.error));
+    const data = (await response.json().catch(() => null)) as { error?: string; ok?: boolean } | null;
+
+    if (!response.ok || data?.error) {
+      throw new Error(data?.error ?? "Could not save admin user.");
     }
 
     return data as { ok?: boolean } | null;
