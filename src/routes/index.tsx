@@ -15,7 +15,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "A landmark one day programme celebrating India's Top HR Leaders across 12+ sector specific award categories.",
+          "A landmark evening programme celebrating India's Top HR Leaders across 12+ sector specific award categories.",
       },
     ],
   }),
@@ -33,7 +33,7 @@ const navLinks = [
 ];
 
 const objectives = [
-  "Recognise and celebrate India's Top HR Leaders across 15+ sector specific and thematic award categories",
+  "Recognise and celebrate India's Top HR Leaders across 12+ sector specific and thematic award categories",
   "Create nationwide media visibility for Asia INC 500 and the honoured CHROs through AI ready thought leadership, digital storytelling, print coverage, and social media amplification",
   "Facilitate high level dialogue on the Future of Work, AI Driven Talent Acquisition, and the Evolving Role of the CHRO",
   "Convene India's most influential HR decision makers in one carefully curated room",
@@ -312,7 +312,7 @@ function Home() {
           <div className="mt-20 mx-auto grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 max-w-4xl">
               {([
                 { k: 20, suf: "+", v: "HR Leaders Honoured", prefix: "" },
-                { text: "12+", v: "Hours of Excellence" },
+                { text: "6", v: "Hours of Excellence" },
                 { k: 200, suf: "+", v: "Senior Leaders", prefix: "" },
                 { k: 12, suf: "+", v: "Award Categories", prefix: "" },
               ] as Array<{ k?: number; suf?: string; v: string; prefix?: string; text?: string }>).map((s) => (
@@ -348,8 +348,8 @@ function Home() {
             <dl className="grid sm:grid-cols-2 gap-x-10 gap-y-7">
               {[
                 ["Event Date", "20th August 2026"],
-                ["Duration", "One Full Day"],
-                ["Venue", "To be disclosed to confirmed delegates"],
+                ["Duration", "Evening Programme · 3:00 PM to 9:00 PM"],
+                ["Venue", "T-Hub, Hyderabad"],
                 ["Format", "Conclave · Awards Ceremony · Gala Dinner"],
                 ["Hosted By", "Asia INC 500, Events & Media Division"],
                 ["Dress Code", "Black Tie · Business Formal"],
@@ -538,7 +538,7 @@ function Home() {
                   <h3 className="mt-2 font-display text-3xl text-cream">
                     Conclave & Top CHRO Awards Night
                   </h3>
-                  <p className="text-sm text-cream/60 mt-1">To be disclosed to confirmed delegates</p>
+                  <p className="text-sm text-cream/60 mt-1">T-Hub, Hyderabad · 3:00 PM to 9:00 PM</p>
                 </div>
                 <span className="text-gold font-display text-5xl opacity-40">01</span>
               </div>
