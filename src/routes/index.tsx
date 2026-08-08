@@ -54,19 +54,18 @@ const outcomes = [
 ];
 
 const programme: Array<{ t: string; title: string; details: string[] }> = [
-  { t: "9:30 AM to 10:30 AM", title: "Welcome and Coffee", details: ["Delegate check in and welcome kit distribution", "Informal networking over coffee"] },
-  { t: "10:30 AM to 11:00 AM", title: "Inaugural Ceremony: Introduction to the event theme and agenda", details: ["Traditional lamp lighting ceremony and welcome address", "Opening remarks by Asia INC 500 and agenda overview"] },
-  { t: "11:00 AM to 11:15 AM", title: "Opening Keynote", details: ["Address by a distinguished keynote speaker on HR leadership and AI"] },
-  { t: "11:15 AM to 12:00 PM", title: "Panel Discussion 1", details: ["Senior CHROs discuss AI powered talent acquisition", "Panelists from Technology, BFSI, and Manufacturing sectors"] },
-  { t: "12:00 PM to 12:30 PM", title: "Roundtable Discussion", details: ["Structured roundtable with CHROs and industry leaders", "Focus on bridging the skills gap between academia and industry"] },
-  { t: "12:30 PM to 1:00 PM", title: "Lunch", details: ["Networking lunch with facilitated interaction among delegates"] },
-  { t: "1:00 PM to 1:30 PM", title: "Buffer Break", details: ["Informal networking and short break"] },
-  { t: "1:30 PM to 2:30 PM", title: "CHRO Leadership HR & AI Roundtable", details: ["Discussion on the skills economy and future workforce needs", "Focus on what companies actually need from emerging talent"] },
-  { t: "2:30 PM to 3:00 PM", title: "AI Enabled Campus Presentation by Chitkara University", details: ["Overview of academic programs and AI enabled learning initiatives", "Placement data, graduate profiles, and corporate partnerships"] },
-  { t: "3:00 PM to 3:30 PM", title: "High Tea & Networking Coffee", details: ["Informal networking among delegates and guests"] },
-  { t: "3:30 PM to 4:00 PM", title: "Final Keynote", details: ["Closing keynote address on India's HR leadership landscape"] },
-  { t: "4:00 PM to 6:00 PM", title: "Awards Ceremony", details: ["Top CHRO Awards presented across key industry categories", "Grand Award. CHRO of the Year, India 2026"] },
-  { t: "6:00 PM to 6:30 PM", title: "Vote of Thanks & Conclusion", details: ["Closing remarks by Asia INC 500", "Formal close of the programme"] },
+  { t: "3:00 PM to 4:00 PM", title: "Registration, Networking & High Tea", details: ["Delegate check in and welcome kit distribution", "Informal networking over high tea"] },
+  { t: "4:00 PM to 4:15 PM", title: "Inaugural Ceremony", details: ["Traditional lamp lighting ceremony and welcome address", "Opening remarks by Asia INC 500 and agenda overview"] },
+  { t: "4:15 PM to 4:30 PM", title: "Keynote Address I", details: ["Address by a distinguished keynote speaker on HR leadership and AI"] },
+  { t: "4:30 PM to 5:15 PM", title: "Panel Discussion I", details: ["Senior CHROs discuss the future of work in the age of AI", "Panelists from Technology, BFSI, and Manufacturing sectors"] },
+  { t: "5:15 PM to 5:30 PM", title: "Networking Break", details: ["Informal networking among delegates and guests"] },
+  { t: "5:30 PM to 5:45 PM", title: "Keynote Address II", details: ["Second keynote on people strategy and organisational transformation"] },
+  { t: "5:45 PM to 6:30 PM", title: "Panel Discussion II", details: ["CHROs and business leaders on talent, culture, and leadership", "Focus on evolving workforce expectations"] },
+  { t: "6:30 PM to 6:45 PM", title: "Address by Chitkara University", details: ["Overview of academic programs and AI enabled learning initiatives", "Placement data, graduate profiles, and corporate partnerships"] },
+  { t: "6:45 PM to 7:00 PM", title: "Partner / Special Address", details: ["Special address by an event partner"] },
+  { t: "7:00 PM to 8:00 PM", title: "Top CHRO Awards Ceremony", details: ["Top CHRO Awards presented across key industry categories", "Grand Award. CHRO of the Year, India 2026"] },
+  { t: "8:00 PM to 8:10 PM", title: "Vote of Thanks", details: ["Closing remarks by Asia INC 500", "Formal close of the programme"] },
+  { t: "8:10 PM to 9:00 PM", title: "Networking Dinner", details: ["Networking dinner and executive engagement"] },
 ];
 
 const awards = [
